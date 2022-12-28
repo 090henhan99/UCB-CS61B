@@ -74,4 +74,7 @@ public class Planet {
         this.xxPos = this.xxPos + duration*this.xxVel;
         this.yyPos = this.yyPos + duration*this.yyVel;   
     }
+    public void draw(double universeSize){
+        StdDraw.picture(this.xxPos/universeSize,this.yyPos/universeSize,"/images/"+this.imgFileName);
+    }
 }
