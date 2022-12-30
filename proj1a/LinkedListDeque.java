@@ -1,4 +1,4 @@
-public class LinkedListDeque<itemType> {
+public class LinkedListDeque<itemType> implements Deque<itemType> {
     /**-------------------------------- */
     /**---------Class Definition------- */
     /**-------------------------------- */
@@ -43,17 +43,21 @@ public class LinkedListDeque<itemType> {
         this.sentinal.prev = this.sentinal;
     }
 
+    @Override
     public void addFirst(itemType item){
         this.size += 1;
         this.sentinal.next = new linkNode(item, this.sentinal, this.sentinal.next);
         this.sentinal.prev = this.sentinal.prev.prev.next;
     }
+
+    @Override
     public void addLast(itemType item){
         this.size += 1;
         this.sentinal.prev = new linkNode(item, this.sentinal.prev, this.sentinal);
         this.sentinal.next = this.sentinal.next.next.prev;
     }
-    
+
+    @Override
     public itemType removeFirst(){
         itemType removeditem;
         if (sentinal.next == sentinal){
@@ -64,6 +68,7 @@ public class LinkedListDeque<itemType> {
         sentinal.next.prev = sentinal;
         return removeditem;
     }
+    @Override
     public itemType removeLast(){
         itemType removeditem;
         if (sentinal.prev == sentinal){
@@ -103,6 +108,7 @@ public class LinkedListDeque<itemType> {
     }
 
     /**public get */
+    @Override
     public itemType get(int index){
         if (sentinal.next == sentinal)
         {
@@ -113,14 +119,17 @@ public class LinkedListDeque<itemType> {
         }
 
     }
+    @Override
     public boolean isEmpty(){
         return (sentinal.next == sentinal);
     }
-    
+
+    @Override
     public int size(){
         return this.size;
     }
 
+    @Override
     public void printDeque(){
         linkNode p=this.sentinal;
         while (p.next != sentinal){
